@@ -5,6 +5,7 @@ import Card from '../Card/Card';
 const CardList = ({ robots }) => {
   return(
     <div>
+
       {robots.map((robot,i) => {
         return(
           <Card

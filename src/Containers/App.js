@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CardList from '../Components/CardList/CardList';
 import SearchBox from '../Components/SearchBox/SearchBox';
 import Scroll from '../Components/Scroll/Scroll';
+import ErrorBoundry from  '../Components/ErrorBoundry';
 import './App.css';
 
 import 'tachyons';
@@ -30,9 +31,9 @@ class App extends Component {
   }
 
   AlphabeticOrder = () => {
-    this.setState({
-      checked: !this.state.checked
-    })
+    this.setState((state) => ({
+      checked: !state.checked
+    }))
   }
 
   Compare = (a,b) =>{
@@ -72,7 +73,9 @@ class App extends Component {
              />
           </div>
             <Scroll>
-              <CardList robots={filteredRobots} />
+              <ErrorBoundry>
+                <CardList robots={filteredRobots} />
+              </ErrorBoundry>
             </Scroll>
         </div>
       )
